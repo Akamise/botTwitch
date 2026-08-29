@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    stop_grace_period: 30s
+    container_name: twilive_bot
+    volumes:
+      - ./data:/app/data
+    environment:
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TELEGRAM_CHANNEL_ID: ${TELEGRAM_CHANNEL_ID}
+      TWITCH_CLIENT_ID: ${TWITCH_CLIENT_ID}
+      TWITCH_CLIENT_SECRET: ${TWITCH_CLIENT_SECRET}
+      STREAMER_USERNAME: ${STREAMER_USERNAME}
+      SEGMENT_DURATION: ${SEGMENT_DURATION}
+      FPS: ${FPS}
+      SCALE_WIDTH: ${SCALE_WIDTH}
+      LOCALE: ${LOCALE}
+    networks:
+      - twilive-network
+    ports:
+      - "3042:3042"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 512M
+
+networks:
+  twilive-network:
+    driver: bridge

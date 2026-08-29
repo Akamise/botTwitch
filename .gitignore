@@ -1,0 +1,16 @@
+/tmp
+/out-tsc
+src/storage/tmp/*
+/data
+.env
+
+/node_modules
+npm-debug.log*
+.yarn/*
+yarn-debug.log*
+yarn-error.log*
+/.pnp
+.pnp.js
+
+.vscode/*
+.idea/*
