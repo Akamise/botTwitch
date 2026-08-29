@@ -23,4 +23,4 @@ RUN yarn build
 
 EXPOSE 3042
 
-CMD ["sh", "-c", "npx prisma migrate deploy && yarn start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && yarn build && yarn start"]
