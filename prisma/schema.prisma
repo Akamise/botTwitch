@@ -1,0 +1,22 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./data/twilive.db"
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+model CurrentPost {
+  streamerUsername  String @id
+  telegramChannelId String
+  messageId         Int
+}
+
+model Log {
+  id        Int      @id @default(autoincrement())
+  level     String
+  message   String
+  timestamp DateTime @default(now())
+}
